@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Redirect} from "react-router-dom";
-import {Get,GetById} from "./ApiHandler";
+import {Get} from "./ApiHandler";
 
 class ApiHOC extends Component{
 
@@ -19,25 +19,6 @@ class ApiHOC extends Component{
             });
         }).catch(err=>{ 
             console.log(err)
-            if(err.status === 404){
-                return <Redirect to="/404" />
-            }else{
-                return <Redirect to="/500" />
-            }
-        }).finally(()=>{
-            this.setState({
-                ...this.state,
-                loading:false
-            });
-        });
-    }
-    ApiCallById = async(route,id)=>{
-        await GetById(route,id).then(res=>{
-            this.setState({
-                ...this.state,
-                data:res.data
-            });
-        }).catch(err=>{
             if(err.status === 404){
                 return <Redirect to="/404" />
             }else{

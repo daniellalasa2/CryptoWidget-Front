@@ -24,33 +24,3 @@ export const Get = async(routeName,params={})=>
         url:ROUTES[routeName.toLowerCase()]["get"]+paramsFormatter(params),
         method:"GET"
     });
-    
-export const GetById = async(routeName,id,params={})=>
-    await AxInstance({
-        url:`${ROUTES[routeName.toLowerCase()]["get"]}/${id}`+paramsFormatter(params),
-        method:"GET"
-    });
-
-export const Paginate = async(routeName,start,limit)=>
-    await AxInstance({
-        url:ROUTES[routeName.toLowerCase()]["get"],
-        method:"GET",
-        params:{
-            _limit:limit,
-            _start:start
-        }
-    });
-
-export const Count = async(routeName)=>
-    await AxInstance({
-        url:`${ROUTES[routeName.toLowerCase()]["get"]}/count`,
-        method:'GET'
-    })
-
-//POST
-export const Post = async(routeName,data)=>
-    await AxInstance({
-        url:ROUTES[routeName.toLowerCase()]["post"],
-        method:"POST",
-        data:data
-    });
